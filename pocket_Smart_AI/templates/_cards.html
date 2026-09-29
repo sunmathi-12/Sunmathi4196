@@ -1,0 +1,10 @@
+{% macro cards(r) %}
+<p>{{ r.summary }}</p>
+{% if r.over_budget %}<p class="warn">These picks run slightly over your budget. Swap the priciest item to fit.</p>{% endif %}
+<div class="grid">{% for i in r.picks %}
+<article><small>{{ i.category }} on {{ i.platform }}</small><h3>{{ i.name }}</h3>
+<b>₹{{ "{:,.0f}".format(i.price) }}</b><p>{{ i.why }}</p>
+<a href="{{ i.url }}" target="_blank" rel="noopener">Search on {{ i.platform }}</a></article>
+{% endfor %}</div>
+<p><strong>Estimated total ₹{{ "{:,.0f}".format(r.total) }}</strong>{% if r.fallback %} (default split, AI unavailable){% endif %}</p>
+{% endmacro %}

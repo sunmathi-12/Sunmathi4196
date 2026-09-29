@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PocketSmart AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css"></head><body>
+<header><a class="logo" href="/">PocketSmart AI</a><nav>
+{% if user %}<a href="/planner/home">Home</a><a href="/planner/party">Party</a><a href="/planner/jewelry">Jewelry</a><a href="/dashboard">Dashboard</a><a href="/history">History</a><a href="/logout">Log out</a>
+{% else %}<a href="/login">Log in</a><a href="/register">Register</a>{% endif %}</nav></header>
+<main>{% block body %}{% endblock %}</main>
+<footer>Prices are AI estimates. Check the store before you buy.</footer></body></html>

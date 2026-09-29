@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% from "_cards.html" import cards %}{% block body %}
+<h1>{{ title }}</h1>
+{% if title == "Dashboard" %}<div class="tiles"><a href="/planner/home">Home planner</a><a href="/planner/party">Party planner</a><a href="/planner/jewelry">Jewelry planner</a></div><h2>Recent plans</h2>{% endif %}
+{% for r in rows %}<details><summary>{{ r.category|title }} plan, ₹{{ "{:,.0f}".format(r.budget) }}, {{ r.created }}</summary>{{ cards(r.result) }}</details>
+{% else %}<p>No plans yet. Pick a planner above to create your first one.</p>{% endfor %}
+{% endblock %}

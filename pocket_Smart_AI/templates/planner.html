@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% from "_cards.html" import cards %}{% block body %}
+<h1>{{ title }}</h1>
+{% if error %}<p class="err">{{ error }}</p>{% endif %}
+<form method="post" action="/generate-{{ kind }}" enctype="multipart/form-data">
+{% for n, l, t, o in fields %}<label>{{ l }}
+{% if t == "select" %}<select name="{{ n }}">{% for x in o %}<option {{ "selected" if vals.get(n) == x }}>{{ x }}</option>{% endfor %}</select>
+{% elif t == "file" %}<input type="file" name="{{ n }}" accept="image/*">
+{% else %}<input name="{{ n }}" type="{{ t }}" step="any" value="{{ vals.get(n, '') }}" {{ "required min=1" if n == "budget" }}>{% endif %}
+</label>{% endfor %}
+<button>Get recommendations</button></form>
+{% if result %}<h2>Your recommendations</h2>{{ cards(result) }}{% endif %}
+{% endblock %}

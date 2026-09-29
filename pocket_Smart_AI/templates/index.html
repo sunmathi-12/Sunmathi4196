@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block body %}
+<h1>Plan it within your budget.</h1>
+<p>Tell PocketSmart AI what you can spend. It picks items from Amazon, Flipkart, IKEA, Swiggy, Zomato and OYO.</p>
+<div class="tiles">{% for k, f in forms.items() %}<a href="/planner/{{ k }}"><h2>{{ f[0] }}</h2></a>{% endfor %}</div>
+{% endblock %}
